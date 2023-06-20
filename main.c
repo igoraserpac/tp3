@@ -42,10 +42,26 @@ int main(int argc, char* argv[]){
     printf("\n================== Caminhamento pré-ordem ==================\n");
     char codigo[10] = "";
     pre_ordem(tree, codigo);
-
-    if(argc > 0){
-        FILE *arq = fopen(argv[0], 'r');
+    printf("\n================== Conversão de frases ==================\n\n");
+    FILE *arq;
+    if(argc > 1){
+        arq = fopen(argv[1], "r");
+    }else{
+        arq = fopen("msg.txt", "r");
     }
-
-    imprimir_codigo_frase(tree, "isso eh um exemplo");
+    char frase[200];
+    while(!feof(arq)){
+        fgets(frase, 200, arq);
+        if(frase[strlen(frase)-1] != '\n') strcat(frase, "\n\0");
+        if(frase[0] != '.' && frase[0] != '-'){
+            printf("Texto:\n  %sCódigo:\n  ", frase);
+            imprimir_codigo_frase(tree, frase);
+            printf("\n");
+        }else{
+            printf("Código:\n  %sTexto:\n  ", frase);
+            imprimir_frase(tree, frase);
+            printf("\n");
+        }
+    }
+    return 0;
 }
