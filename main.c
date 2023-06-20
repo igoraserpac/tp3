@@ -63,5 +63,6 @@ int main(int argc, char* argv[]){
             printf("\n");
         }
     }
+    desaloca_arvore(tree);
     return 0;
 }

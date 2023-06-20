@@ -52,3 +52,8 @@ void imprimir_codigo_frase(Arvore tree, char* frase);
 Imprime o código correspondente à frase. Nesse código as letras são separadas
 por espaço e as palavras são separadas por barra ('/').
 */
+
+void desaloca_arvore(Arvore tree);
+/*
+Desaloca a árvore.
+*/

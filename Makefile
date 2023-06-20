@@ -1,5 +1,5 @@
 all: main.o arvore.o
-	gcc main.o arvore.o -o main
+	gcc -g main.o arvore.o -o main
 	rm *.o
 
 arvores.o: arvore.c arvore.h
