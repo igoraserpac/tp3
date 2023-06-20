@@ -49,9 +49,9 @@ int main(int argc, char* argv[]){
     }else{
         arq = fopen("msg.txt", "r");
     }
-    char frase[200];
+    char frase[1000];
     while(!feof(arq)){
-        fgets(frase, 200, arq);
+        fgets(frase, 1000, arq);
         if(frase[strlen(frase)-1] != '\n') strcat(frase, "\n\0");
         if(frase[0] != '.' && frase[0] != '-'){
             printf("Texto:\n  %sCódigo:\n  ", frase);
