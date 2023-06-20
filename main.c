@@ -1,6 +1,6 @@
 #include "arvore.h"
 
-int main(){
+int main(int argc, char* argv[]){
     Arvore tree;
     inicializar(&tree);
     inserir(&tree, 'E', ".");
@@ -39,6 +39,13 @@ int main(){
     inserir(&tree, '8', "---..");
     inserir(&tree, '9', "----.");
     inserir(&tree, '0', "-----");
-    char codigo[100] = ".. ... ... --- / . .... / ..- -- / . -..- . -- .--. .-.. ---";
-    imprimir_frase(tree, codigo);
+    printf("\n================== Caminhamento pré-ordem ==================\n");
+    char codigo[10] = "";
+    pre_ordem(tree, codigo);
+
+    if(argc > 0){
+        FILE *arq = fopen(argv[0], 'r');
+    }
+
+    imprimir_codigo_frase(tree, "isso eh um exemplo");
 }

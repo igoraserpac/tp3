@@ -36,14 +36,14 @@ int inserir(Arvore *tree, char caracter, char *caminho){
     return 0;
 }
 
-void imprimir(Apontador p, char *caminho){
+void pre_ordem(Apontador p, char *caminho){
     if(p != NULL){
-        strcat(caminho, ".");
-        imprimir(p->esq, caminho);
         if(p->caracter != ' ')
             printf("%s %c\n",caminho, p->caracter);
+        strcat(caminho, ".");
+        pre_ordem(p->esq, caminho);
         strcat(caminho, "-");
-        imprimir(p->dir, caminho);
+        pre_ordem(p->dir, caminho);
     }
     caminho[strlen(caminho)-1] = '\0';
 }
@@ -79,4 +79,46 @@ void imprimir_frase(Arvore tree, char* codigo){
         }
     }
     printf("%c\n", pesquisar_letra(tree, letra));
+}
+
+void imprimir_codigo_letra(Arvore tree, char letra, char* codigo){
+    if(tree != NULL){
+        strcat(codigo, ".");
+        imprimir_codigo_letra(tree->esq, letra, codigo);
+        if(tree->caracter == letra){
+            printf("%s", codigo);
+            return;
+        }
+        strcat(codigo, "-");
+        imprimir_codigo_letra(tree->dir,letra, codigo);
+    }
+    codigo[strlen(codigo)-1] = '\0';
+}
+
+char maiuscula(char letra){
+    if((int)letra >= 97 && (int)letra <= 122)
+        return letra - 32;
+    return letra;
+}
+
+void imprimir_codigo_frase(Arvore tree, char* frase){
+    char codigo[10] = "";
+    for(int i=0; i<strlen(frase); i++){
+        if(frase[i] == ' ')
+            printf("/");
+        else
+            imprimir_codigo_letra(tree, maiuscula(frase[i]), codigo);
+        strcpy(codigo, "");
+        printf(" ");
+    }
+    printf("\n");
+
+}
+
+void desaloca_arvore(Arvore tree){
+    if(tree != NULL){
+        desaloca_arvore(tree->esq);
+        desaloca_arvore(tree->dir);
+        free(tree);
+    }
 }
