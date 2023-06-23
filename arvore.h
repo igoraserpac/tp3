@@ -12,13 +12,13 @@ typedef struct no{
 
 typedef No* Arvore;
 
-int inicializar(Arvore *tree);
+void inicializar(Arvore *tree);
 /*
 Inicializa a árvore, alocando dinamicamente o nó raiz e atribuindo aos filhos 
 desse nó o valor NULL.
 */
 
-int inserir(Arvore *tree, char caracter, char *caminho);
+void inserir(Arvore *tree, char caracter, char *caminho);
 /*
 Insere um caracter na árvore com o caminho especificado.
 */

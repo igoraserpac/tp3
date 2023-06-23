@@ -1,13 +1,13 @@
 #include "arvore.h"
 
-int inicializar(Arvore* tree){
+void inicializar(Arvore* tree){
     *tree = (Apontador)malloc(sizeof(No));
     (*tree)->esq = NULL;
     (*tree)->dir = NULL;
     return 0;
 }
 
-int inserir(Arvore *tree, char caracter, char *caminho){
+void inserir(Arvore *tree, char caracter, char *caminho){
     Apontador atual = *tree;
     for(int i = 0; i<strlen(caminho); i++){
         if(caminho[i] == '.'){
