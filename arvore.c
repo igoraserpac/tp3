@@ -4,7 +4,6 @@ void inicializar(Arvore* tree){
     *tree = (Apontador)malloc(sizeof(No));
     (*tree)->esq = NULL;
     (*tree)->dir = NULL;
-    return 0;
 }
 
 void inserir(Arvore *tree, char caracter, char *caminho){
@@ -33,7 +32,6 @@ void inserir(Arvore *tree, char caracter, char *caminho){
         }
     }
     atual->caracter = caracter;
-    return 0;
 }
 
 void pre_ordem(Apontador p, char *caminho){
