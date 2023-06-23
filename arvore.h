@@ -5,7 +5,7 @@
 typedef struct no *Apontador;
 
 typedef struct no{
-    char caracter;
+    char caractere;
     Apontador esq;
     Apontador dir;
 }No;

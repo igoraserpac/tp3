@@ -6,7 +6,7 @@ void inicializar(Arvore* tree){
     (*tree)->dir = NULL;
 }
 
-void inserir(Arvore *tree, char caracter, char *caminho){
+void inserir(Arvore *tree, char caractere, char *caminho){
     Apontador atual = *tree;
     for(int i = 0; i<strlen(caminho); i++){
         if(caminho[i] == '.'){
@@ -17,7 +17,7 @@ void inserir(Arvore *tree, char caracter, char *caminho){
                 atual = atual->esq;
                 atual->esq == NULL;
                 atual->dir == NULL;
-                atual->caracter = ' ';
+                atual->caractere = ' ';
             }
         }else if(caminho[i] == '-'){
             if(atual->dir != NULL){
@@ -27,17 +27,17 @@ void inserir(Arvore *tree, char caracter, char *caminho){
                 atual = atual->dir;
                 atual->esq == NULL;
                 atual->dir == NULL;
-                atual->caracter = ' ';
+                atual->caractere = ' ';
             }
         }
     }
-    atual->caracter = caracter;
+    atual->caractere = caractere;
 }
 
 void pre_ordem(Apontador p, char *caminho){
     if(p != NULL){
-        if(p->caracter != ' ')
-            printf("%s %c\n",caminho, p->caracter);
+        if(p->caractere != ' ')
+            printf("%s %c\n",caminho, p->caractere);
         strcat(caminho, ".");
         pre_ordem(p->esq, caminho);
         strcat(caminho, "-");
@@ -57,7 +57,7 @@ char pesquisar_letra(Arvore tree, char* codigo){
             letra = letra->dir;
         }
     }
-    return letra->caracter;
+    return letra->caractere;
 }
 
 void imprimir_frase(Arvore tree, char* codigo){
@@ -83,7 +83,7 @@ void imprimir_codigo_letra(Arvore tree, char letra, char* codigo){
     if(tree != NULL){
         strcat(codigo, ".");
         imprimir_codigo_letra(tree->esq, letra, codigo);
-        if(tree->caracter == letra){
+        if(tree->caractere == letra){
             printf("%s", codigo);
             return;
         }
